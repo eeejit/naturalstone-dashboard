@@ -243,15 +243,24 @@ function populatePpcBudgetTable() {
     }).join('');
 }
 
-// Initialize all tables
-populateOverviewTable();
-populateMarbleComparison();
-populateTravertineComparison();
-populateLimestoneComparison();
-populateSeoTechnicalTable();
-populateSeoOnPageTable();
-populateSeoContentTable();
-populatePpcKeywordsTable();
-populatePpcCompetitorsTable();
-populatePpcRecommendationsTable();
-populatePpcBudgetTable();
+// Initialize all tables - ensure DOM is ready
+function initializeTables() {
+        populateOverviewTable();
+        populateMarbleComparison();
+        populateTravertineComparison();
+        populateLimestoneComparison();
+        populateSeoTechnicalTable();
+        populateSeoOnPageTable();
+        populateSeoContentTable();
+        populatePpcKeywordsTable();
+        populatePpcCompetitorsTable();
+        populatePpcRecommendationsTable();
+        populatePpcBudgetTable();
+}
+
+// Run when DOM is ready
+if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeTables);
+} else {
+        initializeTables();
+}
