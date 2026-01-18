@@ -19,6 +19,7 @@
             <button class="tab-btn" data-tab="marble">Marble</button>
             <button class="tab-btn" data-tab="travertine">Travertine</button>
             <button class="tab-btn" data-tab="limestone">Limestone</button>
+            <button class="tab-btn" data-tab="seo">SEO Analysis</button>
         </div>
 
         <!-- Overview Tab -->
@@ -32,6 +33,7 @@
                     <li><strong>Gap in market:</strong> We don't stock travertine - customers asking for it? Consider adding</li>
                 </ul>
             </div>
+
             <div class="grid">
                 <div class="card">
                     <h3>Market Price Positioning</h3>
@@ -42,18 +44,17 @@
                     <div class="chart-container"><canvas id="pieChart"></canvas></div>
                 </div>
             </div>
-            <div class="card full-width">
-                <h3>Head-to-Head: Our Products vs Competitors</h3>
-                <table class="comparison-table">
+
+            <div class="card">
+                <h3>Price Comparison Summary</h3>
+                <table>
                     <thead>
                         <tr>
                             <th>Category</th>
-                            <th>Our Product</th>
-                            <th>Our Price</th>
-                            <th>Closest Competitor</th>
-                            <th>Their Price</th>
-                            <th>Difference</th>
-                            <th>Sales Angle</th>
+                            <th>Our Range</th>
+                            <th>Cheapest Competitor</th>
+                            <th>Most Expensive</th>
+                            <th>Our Position</th>
                         </tr>
                     </thead>
                     <tbody id="overviewComparisonTable"></tbody>
@@ -63,35 +64,26 @@
 
         <!-- Marble Tab -->
         <div id="marble" class="tab-content">
-            <div class="insight-box">
-                <h4>Marble Sales Insights</h4>
-                <ul>
-                    <li><strong>Your price range:</strong> £59-71/m² (5 products)</li>
-                    <li><strong>Best value pitch:</strong> Citadel Bianco Polished at £59 vs Topps Tiles at £147 - <span class="highlight-green">60% cheaper!</span></li>
-                    <li><strong>Watch out:</strong> Stone Deals undercuts us by £15-20/m² - lead with quality not price</li>
-                    <li><strong>Premium opportunity:</strong> Our Lilac Premium (£71) still £40 cheaper than Mandarin's Bianco Carrara (£83)</li>
-                </ul>
-            </div>
             <div class="grid">
                 <div class="card">
                     <h3>Marble Price Comparison</h3>
                     <div class="chart-container"><canvas id="marbleChart"></canvas></div>
                 </div>
                 <div class="card">
-                    <h3>Competitor Price Breakdown</h3>
+                    <h3>Price Distribution</h3>
                     <div class="chart-container"><canvas id="marblePieChart"></canvas></div>
                 </div>
             </div>
-            <div class="card full-width">
-                <h3>Side-by-Side: Our Marble vs Competitors</h3>
-                <table class="comparison-table">
+            <div class="card">
+                <h3>Marble Products in Market</h3>
+                <table>
                     <thead>
                         <tr>
-                            <th>Our Product</th>
-                            <th>Our Price</th>
-                            <th>Similar Competitor Product</th>
-                            <th>Their Price</th>
-                            <th>You Save Customer</th>
+                            <th>Product</th>
+                            <th>Price/m2</th>
+                            <th>Supplier</th>
+                            <th>Size</th>
+                            <th>Finish</th>
                         </tr>
                     </thead>
                     <tbody id="marbleComparisonTable"></tbody>
@@ -101,56 +93,39 @@
 
         <!-- Travertine Tab -->
         <div id="travertine" class="tab-content">
-            <div class="note-box">
-                <strong>Market Opportunity:</strong> Natural Stone Online does not currently stock travertine.
-                The market ranges from £27-61/m². Entry at £35-40/m² could capture mid-market share.
-            </div>
             <div class="insight-box">
-                <h4>Travertine Market Analysis</h4>
-                <ul>
-                    <li><strong>Budget leader:</strong> Travertine Store from £27/m² - high volume, low margin player</li>
-                    <li><strong>Premium player:</strong> Mandarin Stone up to £61/m² - quality positioning</li>
-                    <li><strong>Mid-market gap:</strong> £35-45 range has limited options - opportunity zone</li>
-                    <li><strong>If customers ask:</strong> Refer to Stone Deals (£32-35) or Quorn Stone (£47) as alternatives</li>
-                </ul>
+                <h4>Market Opportunity</h4>
+                <p>Natural Stone Online does not currently stock travertine tiles. Below is competitor pricing for reference if considering adding this category.</p>
             </div>
             <div class="grid">
                 <div class="card">
-                    <h3>Travertine Market Prices</h3>
+                    <h3>Travertine Competitor Prices</h3>
                     <div class="chart-container"><canvas id="travertineChart"></canvas></div>
                 </div>
                 <div class="card">
-                    <h3>Competitor Market Share</h3>
+                    <h3>Price Distribution</h3>
                     <div class="chart-container"><canvas id="travertinePieChart"></canvas></div>
                 </div>
             </div>
-            <div class="card full-width">
-                <h3>Competitor Travertine Products (For Reference)</h3>
-                <table class="comparison-table">
+            <div class="card">
+                <h3>Competitor Travertine Products</h3>
+                <table>
                     <thead>
                         <tr>
-                            <th>Competitor</th>
                             <th>Product</th>
-                            <th>Price</th>
-                            <th>Position</th>
+                            <th>Price/m2</th>
+                            <th>Supplier</th>
+                            <th>Size</th>
+                            <th>Finish</th>
                         </tr>
                     </thead>
-                    <tbody id="travertineTable"></tbody>
+                    <tbody id="travertineComparisonTable"></tbody>
                 </table>
             </div>
         </div>
 
         <!-- Limestone Tab -->
         <div id="limestone" class="tab-content">
-            <div class="insight-box">
-                <h4>Limestone Sales Insights</h4>
-                <ul>
-                    <li><strong>Your price range:</strong> £33-53/m² (5 products) - well positioned mid-market</li>
-                    <li><strong>Price leader:</strong> Garrowby Dijon at £33 beats most competitors!</li>
-                    <li><strong>Watch out:</strong> Mandarin Stone undercuts at £36.60 - but limited range</li>
-                    <li><strong>Premium option:</strong> Malham Grey at £53 competes with Quorn Stone's premium range</li>
-                </ul>
-            </div>
             <div class="grid">
                 <div class="card">
                     <h3>Limestone Price Comparison</h3>
@@ -161,20 +136,101 @@
                     <div class="chart-container"><canvas id="limestonePieChart"></canvas></div>
                 </div>
             </div>
-            <div class="card full-width">
-                <h3>Side-by-Side: Our Limestone vs Competitors</h3>
-                <table class="comparison-table">
+            <div class="card">
+                <h3>Limestone Products in Market</h3>
+                <table>
                     <thead>
                         <tr>
-                            <th>Our Product</th>
-                            <th>Our Price</th>
-                            <th>Similar Competitor Product</th>
-                            <th>Their Price</th>
-                            <th>Difference</th>
+                            <th>Product</th>
+                            <th>Price/m2</th>
+                            <th>Supplier</th>
+                            <th>Size</th>
+                            <th>Finish</th>
                         </tr>
                     </thead>
                     <tbody id="limestoneComparisonTable"></tbody>
                 </table>
+            </div>
+        </div>
+
+        <!-- SEO Analysis Tab -->
+        <div id="seo" class="tab-content">
+            <div class="insight-box seo-critical">
+                <h4>Critical Issues (Fix Immediately)</h4>
+                <ul>
+                    <li><strong>Currency Display Bug:</strong> Prices showing as "Dhs." (UAE Dirhams) instead of GBP - confuses UK customers</li>
+                    <li><strong>Missing Meta Descriptions:</strong> Many pages lack unique meta descriptions - hurts CTR in search results</li>
+                    <li><strong>Duplicate Content:</strong> Marquee banner text repeated 20+ times in HTML source code</li>
+                    <li><strong>JavaScript Errors:</strong> "translator.updateLangSwitcher()" visible in page content - broken script</li>
+                </ul>
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <h3>SEO Score Overview</h3>
+                    <div class="chart-container"><canvas id="seoScoreChart"></canvas></div>
+                </div>
+                <div class="card">
+                    <h3>Issues by Priority</h3>
+                    <div class="chart-container"><canvas id="seoIssuesChart"></canvas></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Technical SEO Audit</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>Status</th>
+                            <th>Current Value</th>
+                            <th>Recommendation</th>
+                        </tr>
+                    </thead>
+                    <tbody id="seoTechnicalTable"></tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h3>On-Page SEO Issues</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Page Type</th>
+                            <th>Issue</th>
+                            <th>Impact</th>
+                            <th>How to Fix</th>
+                        </tr>
+                    </thead>
+                    <tbody id="seoOnPageTable"></tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h3>Content and Structure Issues</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Issue</th>
+                            <th>Location</th>
+                            <th>Priority</th>
+                            <th>Action Required</th>
+                        </tr>
+                    </thead>
+                    <tbody id="seoContentTable"></tbody>
+                </table>
+            </div>
+
+            <div class="insight-box seo-positive">
+                <h4>What is Working Well</h4>
+                <ul>
+                    <li><strong>Sitemap:</strong> Properly configured Shopify sitemap with products, collections, pages, and blog</li>
+                    <li><strong>Robots.txt:</strong> Standard Shopify configuration, properly blocks admin/checkout pages</li>
+                    <li><strong>Schema.org:</strong> Has WebPage structured data on homepage</li>
+                    <li><strong>Trustpilot Integration:</strong> Social proof visible in header - good for conversions</li>
+                    <li><strong>SSL Certificate:</strong> Site properly secured with HTTPS</li>
+                    <li><strong>URL Structure:</strong> Clean, readable URLs (/collections/limestone, /products/garrowby)</li>
+                </ul>
             </div>
         </div>
     </div>
