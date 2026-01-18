@@ -23,46 +23,53 @@
 
         <!-- Overview Tab -->
         <div id="overview" class="tab-content active">
-            <div class="insight-box">
-                <h4>Key Insights</h4>
+            <div class="insight-box sales-wins">
+                <h4>Sales Team Quick Wins</h4>
                 <ul>
-                    <li><strong>Natural Stone Online avg: £55/m²</strong> - Competitive mid-market positioning</li>
-                    <li>Travertine Store is cheapest (£30/m²), Topps Tiles most expensive (£96/m²)</li>
-                    <li>Your marble is 51% cheaper than Topps Tiles but 49% higher than Stone Deals</li>
-                    <li>Opportunity: Consider adding travertine to your product range</li>
+                    <li><strong>vs Topps Tiles:</strong> We're 50-60% cheaper on marble - easy conversions, emphasize same quality</li>
+                    <li><strong>vs Mandarin Stone:</strong> Similar quality positioning, we're 10-20% cheaper - highlight value</li>
+                    <li><strong>vs Stone Deals:</strong> They're cheaper - emphasize our premium quality, better customer service</li>
+                    <li><strong>Gap in market:</strong> We don't stock travertine - customers asking for it? Consider adding</li>
                 </ul>
             </div>
             <div class="grid">
                 <div class="card">
-                    <h3>Average Price Comparison (All Categories)</h3>
+                    <h3>Market Price Positioning</h3>
                     <div class="chart-container"><canvas id="overviewChart"></canvas></div>
                 </div>
                 <div class="card">
-                    <h3>Market Position Summary</h3>
-                    <table>
-                        <thead><tr><th>Competitor</th><th>Avg Price</th><th>vs Natural Stone</th></tr></thead>
-                        <tbody>
-                            <tr class="highlight"><td>Natural Stone Online</td><td class="price">£55/m²</td><td>—</td></tr>
-                            <tr><td>Travertine Store</td><td class="price">£30/m²</td><td style="color:#48bb78">45% cheaper</td></tr>
-                            <tr><td>Stone Deals</td><td class="price">£39/m²</td><td style="color:#48bb78">29% cheaper</td></tr>
-                            <tr><td>Quorn Stone</td><td class="price">£50/m²</td><td style="color:#48bb78">9% cheaper</td></tr>
-                            <tr><td>Mandarin Stone</td><td class="price">£56/m²</td><td style="color:#f6ad55">2% higher</td></tr>
-                            <tr><td>Topps Tiles</td><td class="price">£96/m²</td><td style="color:#fc8181">75% higher</td></tr>
-                        </tbody>
-                    </table>
+                    <h3>Price Range by Category</h3>
+                    <div class="chart-container"><canvas id="pieChart"></canvas></div>
                 </div>
+            </div>
+            <div class="card full-width">
+                <h3>Head-to-Head: Our Products vs Competitors</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Our Product</th>
+                            <th>Our Price</th>
+                            <th>Closest Competitor</th>
+                            <th>Their Price</th>
+                            <th>Difference</th>
+                            <th>Sales Angle</th>
+                        </tr>
+                    </thead>
+                    <tbody id="overviewComparisonTable"></tbody>
+                </table>
             </div>
         </div>
 
         <!-- Marble Tab -->
         <div id="marble" class="tab-content">
             <div class="insight-box">
-                <h4>Marble Market Analysis</h4>
+                <h4>Marble Sales Insights</h4>
                 <ul>
-                    <li><strong>Natural Stone Online: £65/m²</strong> - Mid-premium positioning</li>
-                    <li>Stone Deals is cheapest at £43.50/m², Topps Tiles highest at £147.26/m²</li>
-                    <li>Your marble is 56% cheaper than Topps Tiles - strong value proposition</li>
-                    <li>Consider emphasizing quality vs Stone Deals to justify price difference</li>
+                    <li><strong>Your price range:</strong> 59-71/m2 (5 products)</li>
+                    <li><strong>Best value pitch:</strong> Citadel Bianco Polished at 59 vs Topps Tiles at 147 - <span class="highlight-green">60% cheaper!</span></li>
+                    <li><strong>Watch out:</strong> Stone Deals undercuts us by 15-20/m2 - lead with quality not price</li>
+                    <li><strong>Premium opportunity:</strong> Our Lilac Premium (71) still 40 cheaper than Mandarin's Bianco Carrara (83)</li>
                 </ul>
             </div>
             <div class="grid">
@@ -71,52 +78,191 @@
                     <div class="chart-container"><canvas id="marbleChart"></canvas></div>
                 </div>
                 <div class="card">
-                    <h3>Marble Products</h3>
-                    <table id="marbleTable">
-                        <thead><tr><th>Product</th><th>Supplier</th><th>Price</th></tr></thead>
-                        <tbody></tbody>
-                    </table>
+                    <h3>Competitor Price Breakdown</h3>
+                    <div class="chart-container"><canvas id="marblePieChart"></canvas></div>
                 </div>
+            </div>
+            <div class="card full-width">
+                <h3>Side-by-Side: Our Marble vs Competitors</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Our Product</th>
+                            <th>Our Price</th>
+                            <th>Similar Competitor Product</th>
+                            <th>Their Price</th>
+                            <th>You Save Customer</th>
+                        </tr>
+                    </thead>
+                    <tbody id="marbleComparisonTable"></tbody>
+                </table>
             </div>
         </div>
 
         <!-- Travertine Tab -->
         <div id="travertine" class="tab-content">
             <div class="note-box">
-                Note: Natural Stone Online does not currently stock travertine tiles. This represents a potential growth opportunity.
+                <strong>Market Opportunity:</strong> Natural Stone Online does not currently stock travertine.
+                The market ranges from 27-61/m2. Entry at 35-40/m2 could capture mid-market share.
             </div>
             <div class="insight-box">
                 <h4>Travertine Market Analysis</h4>
                 <ul>
-                    <li>Travertine Store leads with lowest prices at £30/m²</li>
-                    <li>Mandarin Stone positions as premium at £56/m²</li>
-                    <li><strong>Opportunity:</strong> Entry at £35-40/m² could capture mid-market</li>
+                    <li><strong>Budget leader:</strong> Travertine Store from 27/m2 - high volume, low margin player</li>
+                    <li><strong>Premium player:</strong> Mandarin Stone up to 61/m2 - quality positioning</li>
+                    <li><strong>Mid-market gap:</strong> 35-45 range has limited options - opportunity zone</li>
+                    <li><strong>If customers ask:</strong> Refer to Stone Deals (32-35) or Quorn Stone (47) as alternatives</li>
+                </ul>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natural Stone Online - Competitor Intelligence Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Competitor Intelligence Dashboard</h1>
+            <p>Natural Stone Online vs Market Comparison - Updated January 2025</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="overview">Overview</button>
+            <button class="tab-btn" data-tab="marble">Marble</button>
+            <button class="tab-btn" data-tab="travertine">Travertine</button>
+            <button class="tab-btn" data-tab="limestone">Limestone</button>
+        </div>
+
+        <!-- Overview Tab -->
+        <div id="overview" class="tab-content active">
+            <div class="insight-box sales-wins">
+                <h4>Sales Team Quick Wins</h4>
+                <ul>
+                    <li><strong>vs Topps Tiles:</strong> We're 50-60% cheaper on marble - easy conversions, emphasize same quality</li>
+                    <li><strong>vs Mandarin Stone:</strong> Similar quality positioning, we're 10-20% cheaper - highlight value</li>
+                    <li><strong>vs Stone Deals:</strong> They're cheaper - emphasize our premium quality, better customer service</li>
+                    <li><strong>Gap in market:</strong> We don't stock travertine - customers asking for it? Consider adding</li>
                 </ul>
             </div>
             <div class="grid">
                 <div class="card">
-                    <h3>Travertine Price Comparison</h3>
+                    <h3>Market Price Positioning</h3>
+                    <div class="chart-container"><canvas id="overviewChart"></canvas></div>
+                </div>
+                <div class="card">
+                    <h3>Price Range by Category</h3>
+                    <div class="chart-container"><canvas id="pieChart"></canvas></div>
+                </div>
+            </div>
+            <div class="card full-width">
+                <h3>Head-to-Head: Our Products vs Competitors</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Our Product</th>
+                            <th>Our Price</th>
+                            <th>Closest Competitor</th>
+                            <th>Their Price</th>
+                            <th>Difference</th>
+                            <th>Sales Angle</th>
+                        </tr>
+                    </thead>
+                    <tbody id="overviewComparisonTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Marble Tab -->
+        <div id="marble" class="tab-content">
+            <div class="insight-box">
+                <h4>Marble Sales Insights</h4>
+                <ul>
+                    <li><strong>Your price range:</strong> 59-71/m2 (5 products)</li>
+                    <li><strong>Best value pitch:</strong> Citadel Bianco Polished at 59 vs Topps Tiles at 147 - <span class="highlight-green">60% cheaper!</span></li>
+                    <li><strong>Watch out:</strong> Stone Deals undercuts us by 15-20/m2 - lead with quality not price</li>
+                    <li><strong>Premium opportunity:</strong> Our Lilac Premium (71) still 40 cheaper than Mandarin's Bianco Carrara (83)</li>
+                </ul>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>Marble Price Comparison</h3>
+                    <div class="chart-container"><canvas id="marbleChart"></canvas></div>
+                </div>
+                <div class="card">
+                    <h3>Competitor Price Breakdown</h3>
+                    <div class="chart-container"><canvas id="marblePieChart"></canvas></div>
+                </div>
+            </div>
+            <div class="card full-width">
+                <h3>Side-by-Side: Our Marble vs Competitors</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Our Product</th>
+                            <th>Our Price</th>
+                            <th>Similar Competitor Product</th>
+                            <th>Their Price</th>
+                            <th>You Save Customer</th>
+                        </tr>
+                    </thead>
+                    <tbody id="marbleComparisonTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Travertine Tab -->
+        <div id="travertine" class="tab-content">
+            <div class="note-box">
+                <strong>Market Opportunity:</strong> Natural Stone Online does not currently stock travertine.
+                The market ranges from 27-61/m2. Entry at 35-40/m2 could capture mid-market share.
+            </div>
+            <div class="insight-box">
+                <h4>Travertine Market Analysis</h4>
+                <ul>
+                    <li><strong>Budget leader:</strong> Travertine Store from 27/m2 - high volume, low margin player</li>
+                    <li><strong>Premium player:</strong> Mandarin Stone up to 61/m2 - quality positioning</li>
+                    <li><strong>Mid-market gap:</strong> 35-45 range has limited options - opportunity zone</li>
+                    <li><strong>If customers ask:</strong> Refer to Stone Deals (32-35) or Quorn Stone (47) as alternatives</li>
+                </ul>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>Travertine Market Prices</h3>
                     <div class="chart-container"><canvas id="travertineChart"></canvas></div>
                 </div>
                 <div class="card">
-                    <h3>Travertine Products</h3>
-                    <table id="travertineTable">
-                        <thead><tr><th>Product</th><th>Supplier</th><th>Price</th></tr></thead>
-                        <tbody></tbody>
-                    </table>
+                    <h3>Competitor Market Share</h3>
+                    <div class="chart-container"><canvas id="travertinePieChart"></canvas></div>
                 </div>
+            </div>
+            <div class="card full-width">
+                <h3>Competitor Travertine Products (For Reference)</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Competitor</th>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Position</th>
+                        </tr>
+                    </thead>
+                    <tbody id="travertineTable"></tbody>
+                </table>
             </div>
         </div>
 
         <!-- Limestone Tab -->
         <div id="limestone" class="tab-content">
             <div class="insight-box">
-                <h4>Limestone Market Analysis</h4>
+                <h4>Limestone Sales Insights</h4>
                 <ul>
-                    <li><strong>Natural Stone Online: £45/m²</strong> - Competitive pricing</li>
-                    <li>Mandarin Stone cheapest at £36.60/m², Quorn Stone highest at £50.27/m²</li>
-                    <li>Your limestone is well-positioned in the mid-range</li>
-                    <li>Strong competition from Stone Deals at similar price point</li>
+                    <li><strong>Your price range:</strong> 33-53/m2 (5 products) - well positioned mid-market</li>
+                    <li><strong>Price leader:</strong> Garrowby Dijon at 33 beats most competitors!</li>
+                    <li><strong>Watch out:</strong> Mandarin Stone undercuts at 36.60 - but limited range</li>
+                    <li><strong>Premium option:</strong> Malham Grey at 53 competes with Quorn Stone's premium range</li>
                 </ul>
             </div>
             <div class="grid">
@@ -125,12 +271,24 @@
                     <div class="chart-container"><canvas id="limestoneChart"></canvas></div>
                 </div>
                 <div class="card">
-                    <h3>Limestone Products</h3>
-                    <table id="limestoneTable">
-                        <thead><tr><th>Product</th><th>Supplier</th><th>Price</th></tr></thead>
-                        <tbody></tbody>
-                    </table>
+                    <h3>Price Distribution</h3>
+                    <div class="chart-container"><canvas id="limestonePieChart"></canvas></div>
                 </div>
+            </div>
+            <div class="card full-width">
+                <h3>Side-by-Side: Our Limestone vs Competitors</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Our Product</th>
+                            <th>Our Price</th>
+                            <th>Similar Competitor Product</th>
+                            <th>Their Price</th>
+                            <th>Difference</th>
+                        </tr>
+                    </thead>
+                    <tbody id="limestoneComparisonTable"></tbody>
+                </table>
             </div>
         </div>
     </div>
