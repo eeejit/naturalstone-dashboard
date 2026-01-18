@@ -37,73 +37,49 @@ const dashboardData = {
             { name: 'Bianco Ibiza Tumbled', price: 65 }
         ],
         competitorProducts: [
-            { competitor: 'Stone Deals', name: 'Carrara C Polished', price: 43.50 },
-            { competitor: 'Stone Deals', name: 'White Carrara Honed', price: 52 },
-            { competitor: 'Mandarin Stone', name: 'Bianco Carrara Honed', price: 80.41 },
-            { competitor: 'Topps Tiles', name: 'Carrara Marble Matt', price: 147.26 },
-            { competitor: 'Authentic Stone', name: 'Carrara Marble Tumbled', price: 58.70 }
-        ],
-        pieData: {
-            labels: ['Natural Stone Online', 'Stone Deals', 'Mandarin Stone', 'Topps Tiles', 'Authentic Stone'],
-            data: [4, 2, 1, 1, 1]
-        }
-    },
-    travertine: {
-        labels: ['Travertine Store', 'Stone Deals', 'Mandarin Stone', 'Quorn Stone'],
-        prices: [32, 33.50, 52, 47],
-        colors: ['rgba(168, 85, 247, 0.8)', 'rgba(59, 130, 246, 0.8)', 'rgba(249, 115, 22, 0.8)', 'rgba(20, 184, 166, 0.8)'],
-        products: [
-            { competitor: 'Travertine Store', name: 'Classic Light Tumbled', price: 27, position: 'Budget' },
-            { competitor: 'Travertine Store', name: 'Ivory Filled Honed', price: 35, position: 'Mid' },
-            { competitor: 'Stone Deals', name: 'Ivory Classic Tumbled', price: 32, position: 'Budget' },
-            { competitor: 'Stone Deals', name: 'Noce Tumbled', price: 35, position: 'Mid' },
-            { competitor: 'Mandarin Stone', name: 'Classico Unfilled', price: 43.33, position: 'Mid' },
-            { competitor: 'Mandarin Stone', name: 'Platinum Tumbled', price: 61, position: 'Premium' },
-            { competitor: 'Quorn Stone', name: 'Ivory Tumbled', price: 47, position: 'Mid' }
-        ],
-        pieData: {
-            labels: ['Travertine Store', 'Stone Deals', 'Mandarin Stone', 'Quorn Stone'],
-            data: [6, 4, 5, 3]
-        }
+            { competitor: 'Stone Deals', product: 'Carrara C Polished Marble', price: 43.50 },
+            { competitor: 'Mandarin Stone', product: 'Bianco Carrara Honed', price: 80.41 },
+            { competitor: 'Topps Tiles', product: 'Marble White Satin', price: 147.26 },
+            { competitor: 'Authentic Stone', product: 'Carrara Marble Polished', price: 58.70 }
+        ]
     },
     limestone: {
-        labels: ['Natural Stone Online', 'Stone Deals', 'Mandarin Stone', 'Quorn Stone'],
-        prices: [43, 38.50, 45, 49],
-        colors: ['rgba(34, 197, 94, 0.8)', 'rgba(59, 130, 246, 0.8)', 'rgba(249, 115, 22, 0.8)', 'rgba(20, 184, 166, 0.8)'],
+        labels: ['Natural Stone Online', 'Stone Deals', 'Mandarin Stone', 'Quorn Stone', 'Tile Mountain'],
+        prices: [43, 38.95, 51.50, 52.80, 29.95],
+        colors: ['rgba(34, 197, 94, 0.8)', 'rgba(59, 130, 246, 0.8)', 'rgba(249, 115, 22, 0.8)', 'rgba(239, 68, 68, 0.8)', 'rgba(168, 85, 247, 0.8)'],
         ourProducts: [
-            { name: 'Garrowby Dijon Tumbled', price: 33 },
-            { name: 'Malham Beige Tumbled', price: 39 },
-            { name: 'Helmsley Grey Tumbled', price: 45 },
-            { name: 'Malham Grey Tumbled', price: 53 },
-            { name: 'Kirkby Beige Honed', price: 45 }
+            { name: 'Dijon Tumbled', price: 33 },
+            { name: 'Jerusalem Grey Honed', price: 53 },
+            { name: 'Moleanos Blue Honed', price: 47 },
+            { name: 'Sinai Pearl Tumbled', price: 39 }
         ],
         competitorProducts: [
-            { competitor: 'Stone Deals', name: 'Dijon Tumbled', price: 38.50 },
-            { competitor: 'Stone Deals', name: 'Jerusalem Gold Honed', price: 45 },
-            { competitor: 'Mandarin Stone', name: 'Neranjo Limestone', price: 36.60 },
-            { competitor: 'Mandarin Stone', name: 'Jura Grey Honed', price: 53.33 },
-            { competitor: 'Quorn Stone', name: 'Cotswold Limestone', price: 52.50 }
-        ],
-        pieData: {
-            labels: ['Natural Stone Online', 'Stone Deals', 'Mandarin Stone', 'Quorn Stone'],
-            data: [5, 6, 4, 4]
-        }
+            { competitor: 'Stone Deals', product: 'Dijon Tumbled Limestone', price: 38.95 },
+            { competitor: 'Mandarin Stone', product: 'Montpellier Antiqued', price: 51.50 },
+            { competitor: 'Quorn Stone', product: 'Aged Dijon Limestone', price: 52.80 },
+            { competitor: 'Tile Mountain', product: 'Jura Grey Limestone', price: 29.95 }
+        ]
+    },
+    travertine: {
+        labels: ['Travertine Store', 'Stone Deals', 'Mandarin Stone', 'Quorn Stone', 'Topps Tiles'],
+        prices: [27, 34.95, 61.16, 45.60, 89],
+        colors: ['rgba(168, 85, 247, 0.8)', 'rgba(59, 130, 246, 0.8)', 'rgba(249, 115, 22, 0.8)', 'rgba(239, 68, 68, 0.8)', 'rgba(20, 184, 166, 0.8)'],
+        marketNote: 'Natural Stone Online does not currently stock travertine - potential market opportunity',
+        competitorProducts: [
+            { competitor: 'Travertine Store', product: 'Classic Tumbled Travertine', price: 27 },
+            { competitor: 'Stone Deals', product: 'Ivory Tumbled Travertine', price: 34.95 },
+            { competitor: 'Mandarin Stone', product: 'Classico Tumbled', price: 61.16 },
+            { competitor: 'Quorn Stone', product: 'Ivory Travertine', price: 45.60 },
+            { competitor: 'Topps Tiles', product: 'Travertine Ivory Matt', price: 89 }
+        ]
     },
     seo: {
-        scores: {
-            labels: ['Technical SEO', 'On-Page SEO', 'Content', 'Mobile', 'Performance'],
-            data: [75, 55, 70, 75, 50],
-            colors: ['rgba(34, 197, 94, 0.8)', 'rgba(249, 115, 22, 0.8)', 'rgba(34, 197, 94, 0.8)', 'rgba(34, 197, 94, 0.8)', 'rgba(239, 68, 68, 0.8)']
-        },
-        issues: {
-            labels: ['Critical', 'High', 'Medium', 'Low'],
-            data: [2, 5, 8, 5],
-            colors: ['rgba(239, 68, 68, 0.8)', 'rgba(249, 115, 22, 0.8)', 'rgba(250, 204, 21, 0.8)', 'rgba(34, 197, 94, 0.8)']
-        },
         technical: [
-            { element: 'Title Tag (Homepage)', status: 'Good', current: 'Natural Stone Online | Premium Natural Stone Floor and Wall Tiles', recommendation: 'Good length (67 chars). Consider adding location (UK)' },
-            { element: 'Title Tag (Products)', status: 'Good', current: 'Dijon Tumbled Limestone - Garrowby Limestone Flooring', recommendation: 'Well optimized with product and category keywords' },
-            { element: 'Meta Description', status: 'Warning', current: 'Missing on most pages', recommendation: 'Add unique 150-160 char descriptions to all pages' },
+            { element: 'Page Speed', status: 'Warning', current: 'Mobile: 45, Desktop: 72', recommendation: 'Optimize images, enable lazy loading, minify CSS/JS' },
+            { element: 'Mobile Responsiveness', status: 'Good', current: 'Fully responsive Shopify theme', recommendation: 'Continue monitoring with Google Mobile-Friendly Test' },
+            { element: 'URL Structure', status: 'Good', current: 'Clean Shopify URLs', recommendation: 'No changes needed' },
+            { element: 'Title Tags', status: 'Warning', current: 'Some pages missing or generic', recommendation: 'Add unique, keyword-rich titles (50-60 chars) to all pages' },
+            { element: 'Meta Descriptions', status: 'Warning', current: 'Missing on most pages', recommendation: 'Add unique 150-160 char descriptions to all pages' },
             { element: 'Canonical Tags', status: 'Good', current: 'Present on pages', recommendation: 'Properly implemented by Shopify' },
             { element: 'Robots.txt', status: 'Good', current: 'Standard Shopify config', recommendation: 'No changes needed' },
             { element: 'XML Sitemap', status: 'Good', current: 'Auto-generated by Shopify', recommendation: 'Submit to Google Search Console if not done' },
@@ -137,33 +113,55 @@ const dashboardData = {
         }
     },
     ppc: {
+        // VERIFIED DATA SECTION - Sources included
+        verifiedMarketData: {
+            ukTilesMarket: {
+                totalValue: '£537m (2024)',
+                naturalStoneSegment: '£86m',
+                ceramicPorcelain: '£418m',
+                source: 'Barbour ABI Floor and Wall Tiles Market Report 2024'
+            },
+            googleAdsBenchmarks: {
+                homeServicesCPC: '£6-6.20 ($7.60-7.85)',
+                homeServicesCTR: '6.1-6.37%',
+                homeServicesCVR: '7.1-7.33%',
+                ukAverageCPC: '£0.50-5.00 typical range',
+                source: 'WordStream 2025 Google Ads Benchmarks, Vertical Leap UK'
+            },
+            competitorRevenue: {
+                toppsTiles: { revenue: '£210.4m (FY2024)', stores: 301, source: 'Topps Group Annual Report 2024' },
+                mandarinStone: { revenue: '£44.9m (2022)', showrooms: 14, source: 'Companies House / Insider Media' }
+            },
+            toppsTilesInsight: {
+                fact: 'Achieved 57% increase in Shopping clicks with 16% reduction in CPC using CSS partner',
+                source: 'Think with Google Case Study'
+            }
+        },
+        // DATA REQUIRING TOOLS - Estimates marked
         overview: {
-            avgCpcUk: '£2-5',
-            industryBenchmark: '£5-7 (Home Improvement)',
-            recommendedBudget: '£1,500-3,000/month',
-            expectedCtr: '2-4%'
+            avgCpcUk: '£2-6 (estimated based on home improvement benchmarks)',
+            industryBenchmark: '£6-7 (Home Services - WordStream 2025)',
+            recommendedBudget: '£1,500-3,000/month (industry standard)',
+            expectedCtr: '2-4% (conservative estimate)',
+            dataNote: 'Exact keyword CPCs require Google Keyword Planner access'
         },
         keywordAnalysis: [
-            { keyword: 'natural stone tiles', searchVolume: '2,400/mo', competition: 'High', estimatedCpc: '£3.50-5.00', priority: 'High', notes: 'Core term - high intent' },
-            { keyword: 'limestone floor tiles', searchVolume: '1,600/mo', competition: 'Medium', estimatedCpc: '£2.80-4.20', priority: 'High', notes: 'Strong product match' },
-            { keyword: 'travertine tiles uk', searchVolume: '880/mo', competition: 'Medium', estimatedCpc: '£2.50-3.80', priority: 'Medium', notes: 'Opportunity - you dont stock travertine' },
-            { keyword: 'marble floor tiles', searchVolume: '1,900/mo', competition: 'High', estimatedCpc: '£3.20-4.80', priority: 'High', notes: 'Good product range available' },
-            { keyword: 'stone tiles for bathroom', searchVolume: '720/mo', competition: 'Medium', estimatedCpc: '£2.20-3.50', priority: 'Medium', notes: 'Room-specific targeting' },
-            { keyword: 'kitchen stone flooring', searchVolume: '590/mo', competition: 'Medium', estimatedCpc: '£2.40-3.60', priority: 'Medium', notes: 'Room-specific targeting' },
-            { keyword: 'outdoor stone tiles', searchVolume: '1,100/mo', competition: 'Medium', estimatedCpc: '£2.00-3.20', priority: 'High', notes: 'Seasonal opportunity' },
-            { keyword: 'natural stone suppliers uk', searchVolume: '390/mo', competition: 'Low', estimatedCpc: '£1.80-2.80', priority: 'High', notes: 'High intent B2B/trade' },
-            { keyword: 'cheap natural stone tiles', searchVolume: '480/mo', competition: 'Medium', estimatedCpc: '£1.50-2.50', priority: 'Low', notes: 'Price-sensitive - lower margins' },
-            { keyword: 'luxury stone flooring', searchVolume: '210/mo', competition: 'Low', estimatedCpc: '£3.00-4.50', priority: 'Medium', notes: 'Premium segment targeting' }
+            { keyword: 'natural stone tiles', searchVolume: 'Needs Google Keyword Planner', competition: 'High', estimatedCpc: '£3-5 (est)', priority: 'High', notes: 'Core term - verify with Keyword Planner' },
+            { keyword: 'limestone floor tiles', searchVolume: 'Needs Google Keyword Planner', competition: 'Medium', estimatedCpc: '£2.50-4 (est)', priority: 'High', notes: 'Strong product match' },
+            { keyword: 'marble floor tiles', searchVolume: 'Needs Google Keyword Planner', competition: 'High', estimatedCpc: '£3-5 (est)', priority: 'High', notes: 'Good product range available' },
+            { keyword: 'stone tiles for bathroom', searchVolume: 'Needs Google Keyword Planner', competition: 'Medium', estimatedCpc: '£2-3.50 (est)', priority: 'Medium', notes: 'Room-specific targeting' },
+            { keyword: 'natural stone suppliers uk', searchVolume: 'Needs Google Keyword Planner', competition: 'Low', estimatedCpc: '£1.50-2.50 (est)', priority: 'High', notes: 'High intent B2B/trade' }
         ],
         competitors: [
-            { name: 'Topps Tiles', adSpend: '£50,000+/mo (est)', adCoverage: 'Very High', keyStrength: 'Brand recognition, massive budget', threat: 'High' },
-            { name: 'Mandarin Stone', adSpend: '£15,000-25,000/mo (est)', adCoverage: 'High', keyStrength: 'Premium positioning, showrooms', threat: 'High' },
-            { name: 'Stone Deals', adSpend: '£5,000-10,000/mo (est)', adCoverage: 'Medium', keyStrength: 'Price-focused messaging', threat: 'Medium' },
-            { name: 'Tile Mountain', adSpend: '£30,000+/mo (est)', adCoverage: 'High', keyStrength: 'Aggressive discounting', threat: 'Medium' },
-            { name: 'Walls and Floors', adSpend: '£20,000-30,000/mo (est)', adCoverage: 'High', keyStrength: 'Wide range, fast delivery', threat: 'Medium' },
-            { name: 'Porcelanosa', adSpend: '£25,000+/mo (est)', adCoverage: 'High', keyStrength: 'Luxury brand positioning', threat: 'Low' }
+            { name: 'Topps Tiles', adSpend: 'Large (£210m revenue company)', adCoverage: 'Very High', keyStrength: 'Brand recognition, 301 stores, massive budget', threat: 'High', verified: 'Revenue verified - Topps Group 2024' },
+            { name: 'Mandarin Stone', adSpend: 'Medium-Large (£45m revenue)', adCoverage: 'High', keyStrength: 'Premium positioning, 14 showrooms', threat: 'High', verified: 'Revenue verified - Companies House 2022' },
+            { name: 'Stone Deals', adSpend: 'Unknown - needs SpyFu/SEMrush', adCoverage: 'Medium', keyStrength: 'Price-focused messaging', threat: 'Medium', verified: 'Not verified' },
+            { name: 'Tile Mountain', adSpend: 'Unknown - needs SpyFu/SEMrush', adCoverage: 'High', keyStrength: 'Aggressive discounting', threat: 'Medium', verified: 'Not verified' },
+            { name: 'Walls and Floors', adSpend: 'Unknown - needs SpyFu/SEMrush', adCoverage: 'High', keyStrength: 'Wide range, fast delivery', threat: 'Medium', verified: 'Not verified' },
+            { name: 'Porcelanosa', adSpend: 'Unknown - needs SpyFu/SEMrush', adCoverage: 'High', keyStrength: 'Luxury brand positioning', threat: 'Low', verified: 'Not verified' }
         ],
         recommendations: [
+            { priority: 'High', action: 'Get Google Ads access', details: 'Use Keyword Planner for accurate search volumes and CPC data for UK stone tiles market' },
             { priority: 'High', action: 'Start with long-tail keywords', details: 'Target specific stone types + room combinations to reduce CPC and improve conversion' },
             { priority: 'High', action: 'Implement negative keywords', details: 'Exclude "free", "DIY", "how to" to avoid wasted spend on non-buyers' },
             { priority: 'High', action: 'Create location-specific campaigns', details: 'Target UK regions with delivery messaging, consider Yorkshire focus initially' },
@@ -173,10 +171,22 @@ const dashboardData = {
             { priority: 'Low', action: 'YouTube pre-roll ads', details: 'Consider video ads for brand awareness in home improvement content' }
         ],
         budgetScenarios: [
-            { budget: '£1,000/mo', expectedClicks: '200-400', expectedConversions: '4-12', bestFor: 'Testing and learning phase' },
-            { budget: '£2,500/mo', expectedClicks: '500-1,000', expectedConversions: '10-30', bestFor: 'Steady growth, cover core keywords' },
-            { budget: '£5,000/mo', expectedClicks: '1,000-2,000', expectedConversions: '20-60', bestFor: 'Competitive presence, multiple campaigns' },
-            { budget: '£10,000/mo', expectedClicks: '2,000-4,000', expectedConversions: '40-120', bestFor: 'Market leadership push' }
+            { budget: '£1,000/mo', expectedClicks: '150-400 (based on £2.50-6.50 CPC)', expectedConversions: '4-12 (at 2-3% CVR)', bestFor: 'Testing and learning phase' },
+            { budget: '£2,500/mo', expectedClicks: '400-1,000', expectedConversions: '10-30', bestFor: 'Steady growth, cover core keywords' },
+            { budget: '£5,000/mo', expectedClicks: '800-2,000', expectedConversions: '20-60', bestFor: 'Competitive presence, multiple campaigns' },
+            { budget: '£10,000/mo', expectedClicks: '1,500-4,000', expectedConversions: '40-120', bestFor: 'Market leadership push' }
+        ],
+        toolsNeeded: [
+            { tool: 'Google Keyword Planner', purpose: 'Accurate UK keyword search volumes and CPC estimates', access: 'Free with Google Ads account' },
+            { tool: 'Google Ads Account', purpose: 'Run campaigns, access auction insights for competitor data', access: 'Free to set up' },
+            { tool: 'SEMrush or SpyFu', purpose: 'Competitor ad spend estimates and keyword intelligence', access: 'Paid subscription ~£100-200/mo' },
+            { tool: 'Google Analytics 4', purpose: 'Track conversions and attribute to PPC campaigns', access: 'Free' }
+        ],
+        quickWins: [
+            'Log into Google Ads and use Keyword Planner to get real search volume data',
+            'Check Auction Insights report to see actual competitors in your ad auctions',
+            'Start with £500-1000 test budget on Shopping Ads for quick learnings',
+            'Focus on Yorkshire/local delivery areas initially for better conversion rates'
         ]
     }
 };
