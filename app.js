@@ -56,83 +56,97 @@ function createPieChart(ctx, labels, data, colors, title) {
             plugins: {
                 legend: {
                     position: 'right',
-                    labels: {
-                        padding: 15,
-                        usePointStyle: true
-                    }
+                    labels: { padding: 15, usePointStyle: true }
                 },
-                title: {
-                    display: !!title,
-                    text: title
-                }
+                title: { display: !!title, text: title }
             }
         }
     });
 }
 
-// Populate overview comparison table
+// Populate overview price comparison table (by category, not product)
 function populateOverviewComparison() {
     const tbody = document.getElementById('overviewComparisonTable');
-    if (!tbody) return;
+    if (!tbody || !dashboardData.overview.priceComparison) return;
 
-    tbody.innerHTML = dashboardData.overview.comparisons.map(c => {
-        const diff = c.ourPrice - c.theirPrice;
-        const diffClass = diff < 0 ? 'price-win' : 'price-lose';
-        const diffText = diff < 0
-            ? '<span class="' + diffClass + '">£' + Math.abs(diff).toFixed(2) + ' cheaper</span>'
-            : '<span class="' + diffClass + '">£' + diff.toFixed(2) + ' more</span>';
-
+    tbody.innerHTML = dashboardData.overview.priceComparison.map(c => {
         return '<tr>' +
             '<td><strong>' + c.category + '</strong></td>' +
-            '<td>' + c.ourProduct + '</td>' +
-            '<td class="price our-price">£' + c.ourPrice.toFixed(2) + '</td>' +
-            '<td>' + c.theirProduct + '<br><small class="competitor-name">' + c.competitor + '</small></td>' +
-            '<td class="price">£' + c.theirPrice.toFixed(2) + '</td>' +
-            '<td>' + diffText + '</td>' +
-            '<td class="sales-angle">' + c.salesAngle + '</td>' +
+            '<td colspan="2" class="our-price">' + c.ourRange + '</td>' +
+            '<td>' + c.competitorLow + '</td>' +
+            '<td>' + c.competitorHigh + '</td>' +
+            '<td colspan="2" class="sales-angle">' + c.ourPosition + '</td>' +
         '</tr>';
     }).join('');
 }
 
-// Populate marble comparison table
+// Populate marble products tables (separate our products from competitors)
 function populateMarbleComparison() {
     const tbody = document.getElementById('marbleComparisonTable');
     if (!tbody) return;
 
-    tbody.innerHTML = dashboardData.marble.comparisons.map(c => {
-        const isWin = c.diff.includes('less') || c.diff.includes('-');
-        const diffClass = isWin ? 'price-win' : 'price-lose';
+    // Show our products first
+    let html = '<tr class="section-header"><td colspan="5"><strong>Our Marble Products</strong></td></tr>';
+    
+    if (dashboardData.marble.ourProducts) {
+        html += dashboardData.marble.ourProducts.map(p => {
+            return '<tr class="highlight">' +
+                '<td><strong>' + p.name + '</strong></td>' +
+                '<td class="price our-price">£' + p.price.toFixed(2) + '</td>' +
+                '<td colspan="3">Natural Stone Online</td>' +
+            '</tr>';
+        }).join('');
+    }
 
-        return '<tr>' +
-            '<td><strong>' + c.ourProduct + '</strong></td>' +
-            '<td class="price our-price">£' + c.ourPrice.toFixed(2) + '</td>' +
-            '<td>' + c.theirProduct + '</td>' +
-            '<td class="price">£' + c.theirPrice.toFixed(2) + '</td>' +
-            '<td class="' + diffClass + '">' + c.diff + '</td>' +
-        '</tr>';
-    }).join('');
+    // Then competitor products
+    html += '<tr class="section-header"><td colspan="5"><strong>Competitor Marble Products</strong></td></tr>';
+    
+    if (dashboardData.marble.competitorProducts) {
+        html += dashboardData.marble.competitorProducts.map(p => {
+            return '<tr>' +
+                '<td>' + p.name + '</td>' +
+                '<td class="price">£' + p.price.toFixed(2) + '</td>' +
+                '<td colspan="3">' + p.competitor + '</td>' +
+            '</tr>';
+        }).join('');
+    }
+
+    tbody.innerHTML = html;
 }
 
-// Populate limestone comparison table
+// Populate limestone products tables
 function populateLimestoneComparison() {
     const tbody = document.getElementById('limestoneComparisonTable');
     if (!tbody) return;
 
-    tbody.innerHTML = dashboardData.limestone.comparisons.map(c => {
-        const isWin = c.diff.includes('less') || c.diff.includes('-');
-        const diffClass = isWin ? 'price-win' : (c.diff.includes('Same') ? '' : 'price-lose');
+    let html = '<tr class="section-header"><td colspan="5"><strong>Our Limestone Products</strong></td></tr>';
+    
+    if (dashboardData.limestone.ourProducts) {
+        html += dashboardData.limestone.ourProducts.map(p => {
+            return '<tr class="highlight">' +
+                '<td><strong>' + p.name + '</strong></td>' +
+                '<td class="price our-price">£' + p.price.toFixed(2) + '</td>' +
+                '<td colspan="3">Natural Stone Online</td>' +
+            '</tr>';
+        }).join('');
+    }
 
-        return '<tr>' +
-            '<td><strong>' + c.ourProduct + '</strong></td>' +
-            '<td class="price our-price">£' + c.ourPrice.toFixed(2) + '</td>' +
-            '<td>' + c.theirProduct + '</td>' +
-            '<td class="price">£' + c.theirPrice.toFixed(2) + '</td>' +
-            '<td class="' + diffClass + '">' + c.diff + '</td>' +
-        '</tr>';
-    }).join('');
+    html += '<tr class="section-header"><td colspan="5"><strong>Competitor Limestone Products</strong></td></tr>';
+    
+    if (dashboardData.limestone.competitorProducts) {
+        html += dashboardData.limestone.competitorProducts.map(p => {
+            return '<tr>' +
+                '<td>' + p.name + '</td>' +
+                '<td class="price">£' + p.price.toFixed(2) + '</td>' +
+                '<td colspan="3">' + p.competitor + '</td>' +
+            '</tr>';
+        }).join('');
+    }
+
+    tbody.innerHTML = html;
 }
 
-// Populate travertine table (competitor products only)
+// Populate travertine table (competitor products only - we don't stock)
 function populateTravertineTable() {
     const tbody = document.getElementById('travertineTable');
     if (!tbody) return;
