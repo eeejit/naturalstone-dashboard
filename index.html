@@ -10,175 +10,75 @@
     <style>
         .gradient-bg { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); }
         .card { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
-        .card:hover { border-color: rgba(255,255,255,0.2); transform: translateY(-2px); transition: all 0.3s; }
         .stat-card { background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%); }
         .table-row:hover { background: rgba(255,255,255,0.05); }
-        .price-low { color: #4ade80; }
-        .price-mid { color: #fbbf24; }
-        .price-high { color: #f87171; }
+        .price-low { color: #4ade80; } .price-mid { color: #fbbf24; } .price-high { color: #f87171; }
         .pulse { animation: pulse 2s infinite; }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .tab-active { background: #2563eb; box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.3); }
+        .tab-inactive { background: rgba(255,255,255,0.05); }
     </style>
 </head>
 <body class="gradient-bg min-h-screen text-white">
     <header class="border-b border-white/10 px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div>
-                <h1 class="text-2xl font-bold">Natural Stone Online</h1>
-                <p class="text-gray-400 text-sm">Competitor Intelligence Dashboard</p>
-            </div>
-            <div class="flex items-center gap-4">
-                <span class="text-sm text-gray-400">Last updated: <span class="text-green-400">January 2026</span></span>
-                <div class="w-2 h-2 bg-green-400 rounded-full pulse"></div>
-            </div>
+            <div><h1 class="text-2xl font-bold">Natural Stone Online</h1><p class="text-gray-400 text-sm">Competitor Intelligence Dashboard</p></div>
+            <div class="flex items-center gap-4"><span class="text-sm text-gray-400">Last updated: <span class="text-green-400">January 2026</span></span><div class="w-2 h-2 bg-green-400 rounded-full pulse"></div></div>
         </div>
     </header>
     <main class="max-w-7xl mx-auto px-6 py-8">
+        <div class="flex gap-2 mb-8 flex-wrap" id="tabs">
+            <button onclick="show('overview')" id="tab-overview" class="tab-active px-6 py-3 rounded-xl font-medium flex items-center gap-2"><i class="fas fa-chart-pie"></i> Overview</button>
+            <button onclick="show('marble')" id="tab-marble" class="tab-inactive px-6 py-3 rounded-xl font-medium flex items-center gap-2"><i class="fas fa-gem"></i> Marble</button>
+            <button onclick="show('travertine')" id="tab-travertine" class="tab-inactive px-6 py-3 rounded-xl font-medium flex items-center gap-2"><i class="fas fa-layer-group"></i> Travertine</button>
+            <button onclick="show('limestone')" id="tab-limestone" class="tab-inactive px-6 py-3 rounded-xl font-medium flex items-center gap-2"><i class="fas fa-mountain"></i> Limestone</button>
+        </div>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <div class="stat-card rounded-xl p-6">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-gray-400 text-sm">Competitors Tracked</p>
-                        <p class="text-3xl font-bold mt-1">6</p>
-                    </div>
-                    <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-store text-blue-400 text-xl"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="stat-card rounded-xl p-6">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-gray-400 text-sm">Products Analysed</p>
-                        <p class="text-3xl font-bold mt-1">750+</p>
-                    </div>
-                    <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-cube text-purple-400 text-xl"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="stat-card rounded-xl p-6">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-gray-400 text-sm">Avg Market Price</p>
-                        <p class="text-3xl font-bold mt-1">£52<span class="text-lg">/m²</span></p>
-                    </div>
-                    <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-pound-sign text-green-400 text-xl"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="stat-card rounded-xl p-6">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-gray-400 text-sm">Price Advantage</p>
-                        <p class="text-3xl font-bold mt-1 text-green-400">-18%</p>
-                    </div>
-                    <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-arrow-trend-down text-green-400 text-xl"></i>
-                    </div>
-                </div>
-            </div>
+            <div class="stat-card rounded-xl p-6"><div class="flex items-center justify-between"><div><p class="text-gray-400 text-sm">Competitors Tracked</p><p class="text-3xl font-bold mt-1">6</p></div><div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center"><i class="fas fa-store text-blue-400 text-xl"></i></div></div></div>
+            <div class="stat-card rounded-xl p-6"><div class="flex items-center justify-between"><div><p class="text-gray-400 text-sm">Products Analysed</p><p class="text-3xl font-bold mt-1">750+</p></div><div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center"><i class="fas fa-cube text-purple-400 text-xl"></i></div></div></div>
+            <div class="stat-card rounded-xl p-6"><div class="flex items-center justify-between"><div><p class="text-gray-400 text-sm">Avg Market Price</p><p class="text-3xl font-bold mt-1">£52<span class="text-lg">/m²</span></p></div><div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center"><i class="fas fa-pound-sign text-green-400 text-xl"></i></div></div></div>
+            <div class="stat-card rounded-xl p-6"><div class="flex items-center justify-between"><div><p class="text-gray-400 text-sm">Price Advantage</p><p class="text-3xl font-bold mt-1 text-green-400">-18%</p></div><div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center"><i class="fas fa-arrow-trend-down text-green-400 text-xl"></i></div></div></div>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-            <div class="card rounded-xl p-6">
-                <h3 class="text-lg font-semibold mb-4">Carrara Marble Price Comparison (£/m²)</h3>
-                <canvas id="priceChart" height="200"></canvas>
-            </div>
-            <div class="card rounded-xl p-6">
-                <h3 class="text-lg font-semibold mb-4">Competitor Product Range</h3>
-                <canvas id="productChart" height="200"></canvas>
-            </div>
+            <div class="card rounded-xl p-6"><h3 class="text-lg font-semibold mb-4" id="chart-title">Carrara Marble Price Comparison (£/m²)</h3><canvas id="priceChart" height="200"></canvas></div>
+            <div class="card rounded-xl p-6"><h3 class="text-lg font-semibold mb-4">Competitor Product Range</h3><canvas id="productChart" height="200"></canvas></div>
         </div>
-        <div class="card rounded-xl p-6 mb-8">
-            <h3 class="text-lg font-semibold mb-6">Competitor Overview</h3>
-            <table class="w-full">
-                <thead>
-                    <tr class="border-b border-white/10">
-                        <th class="text-left py-3 px-4 text-gray-400">Competitor</th>
-                        <th class="text-left py-3 px-4 text-gray-400">Products</th>
-                        <th class="text-left py-3 px-4 text-gray-400">Price Range</th>
-                        <th class="text-left py-3 px-4 text-gray-400">Threat</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="border-b border-white/5"><td class="py-3 px-4">Stone Deals</td><td>120+</td><td>£23.99 - £139.99</td><td><span class="text-red-400">High</span></td></tr>
-                    <tr class="border-b border-white/5"><td class="py-3 px-4">Mandarin Stone</td><td>233</td><td>£35.99 - £183.91</td><td><span class="text-yellow-400">Medium</span></td></tr>
-                    <tr class="border-b border-white/5"><td class="py-3 px-4">Topps Tiles</td><td>34</td><td>£53.38 - £160.95</td><td><span class="text-green-400">Low</span></td></tr>
-                    <tr class="border-b border-white/5"><td class="py-3 px-4">Quorn Stone</td><td>50+</td><td>£33.16 - £88.00</td><td><span class="text-yellow-400">Medium</span></td></tr>
-                    <tr class="border-b border-white/5"><td class="py-3 px-4">Authentic Stone</td><td>284</td><td>£49.95 - £89.90</td><td><span class="text-yellow-400">Medium</span></td></tr>
-                    <tr><td class="py-3 px-4">Travertine Store</td><td>30+</td><td>£23.99 - £36.99</td><td><span class="text-yellow-400">Medium</span></td></tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div class="card rounded-xl p-6">
-                <h4 class="font-semibold mb-4 text-green-400">✓ Our Advantages</h4>
-                <ul class="space-y-2 text-sm text-gray-300">
-                    <li>→ Competitive Carrara pricing vs Mandarin & Topps</li>
-                    <li>→ York showroom for customer experience</li>
-                    <li>→ Direct warehouse = faster delivery</li>
-                </ul>
-            </div>
-            <div class="card rounded-xl p-6">
-                <h4 class="font-semibold mb-4 text-yellow-400">⚠ Watch Out For</h4>
-                <ul class="space-y-2 text-sm text-gray-300">
-                    <li>→ Stone Deals aggressive "70% off" messaging</li>
-                    <li>→ Travertine Store budget positioning</li>
-                    <li>→ Quorn Stone winter sale promotions</li>
-                </ul>
-            </div>
-            <div class="card rounded-xl p-6">
-                <h4 class="font-semibold mb-4 text-blue-400">💡 Recommendations</h4>
-                <ul class="space-y-2 text-sm text-gray-300">
-                    <li>→ Highlight Carrara value vs premium competitors</li>
-                    <li>→ Consider travertine promotional pricing</li>
-                    <li>→ Push sample service as differentiator</li>
-                </ul>
-            </div>
+        <div id="content"></div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
+            <div class="card rounded-xl p-6"><div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center"><i class="fas fa-check text-green-400"></i></div><h4 class="font-semibold">Our Advantages</h4></div><ul class="space-y-2 text-sm text-gray-300"><li>→ Competitive Carrara pricing vs Mandarin & Topps</li><li>→ York showroom for customer experience</li><li>→ Direct warehouse = faster delivery</li></ul></div>
+            <div class="card rounded-xl p-6"><div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 bg-yellow-500/20 rounded-lg flex items-center justify-center"><i class="fas fa-exclamation-triangle text-yellow-400"></i></div><h4 class="font-semibold">Watch Out For</h4></div><ul class="space-y-2 text-sm text-gray-300"><li>→ Stone Deals aggressive "70% off" messaging</li><li>→ Travertine Store budget positioning</li><li>→ Quorn Stone winter sale promotions</li></ul></div>
+            <div class="card rounded-xl p-6"><div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center"><i class="fas fa-lightbulb text-blue-400"></i></div><h4 class="font-semibold">Recommendations</h4></div><ul class="space-y-2 text-sm text-gray-300"><li>→ Highlight Carrara value vs premium competitors</li><li>→ Consider travertine promotional pricing</li><li>→ Push sample service as differentiator</li></ul></div>
         </div>
     </main>
-    <footer class="border-t border-white/10 mt-12 py-6 text-center text-gray-400 text-sm">
-        Natural Stone Online Competitor Intelligence Dashboard | Data refreshed January 2026
-    </footer>
+    <footer class="border-t border-white/10 mt-12 py-6 text-center text-gray-400 text-sm">Natural Stone Online Competitor Intelligence Dashboard | Data refreshed January 2026</footer>
     <script>
-        const priceCtx = document.getElementById('priceChart').getContext('2d');
-        new Chart(priceCtx, {
-            type: 'bar',
-            data: {
-                labels: ['Stone Deals', 'Mandarin Stone', 'Topps Tiles', 'Authentic Stone'],
-                datasets: [{
-                    label: 'Price (£/m²)',
-                    data: [42.99, 91.73, 160.95, 49.95],
-                    backgroundColor: ['#4ade80', '#fbbf24', '#f87171', '#fbbf24'],
-                    borderRadius: 8,
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: { legend: { display: false } },
-                scales: {
-                    y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#9ca3af' } },
-                    x: { grid: { display: false }, ticks: { color: '#9ca3af' } }
-                }
-            }
-        });
-        const productCtx = document.getElementById('productChart').getContext('2d');
-        new Chart(productCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Authentic Stone', 'Mandarin Stone', 'Stone Deals', 'Quorn Stone', 'Topps Tiles', 'Travertine Store'],
-                datasets: [{
-                    data: [284, 233, 120, 50, 34, 30],
-                    backgroundColor: ['#a855f7', '#f59e0b', '#f97316', '#10b981', '#ef4444', '#06b6d4'],
-                    borderWidth: 0,
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: { legend: { position: 'right', labels: { color: '#9ca3af', padding: 15 } } }
-            }
-        });
+        const data = {
+            overview: { title: 'Carrara Marble Price Comparison (£/m²)', labels: ['Stone Deals', 'Mandarin', 'Topps', 'Authentic'], prices: [42.99, 91.73, 160.95, 49.95],
+                html: '<div class="card rounded-xl p-6"><h3 class="text-lg font-semibold mb-4">Competitor Overview</h3><table class="w-full"><thead><tr class="border-b border-white/10"><th class="text-left py-3 px-4 text-gray-400">Competitor</th><th class="py-3 px-4 text-gray-400">Products</th><th class="py-3 px-4 text-gray-400">Price Range</th><th class="py-3 px-4 text-gray-400">Threat</th></tr></thead><tbody><tr class="border-b border-white/5"><td class="py-3 px-4"><span class="text-orange-400 font-bold">SD</span> Stone Deals</td><td class="py-3 px-4">120+</td><td class="py-3 px-4 price-low">£23.99-£139.99</td><td class="py-3 px-4"><span class="bg-red-500/20 text-red-400 px-2 py-1 rounded text-sm">High</span></td></tr><tr class="border-b border-white/5"><td class="py-3 px-4"><span class="text-amber-400 font-bold">MS</span> Mandarin Stone</td><td class="py-3 px-4">233</td><td class="py-3 px-4 price-mid">£35.99-£183.91</td><td class="py-3 px-4"><span class="bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded text-sm">Medium</span></td></tr><tr class="border-b border-white/5"><td class="py-3 px-4"><span class="text-red-400 font-bold">TT</span> Topps Tiles</td><td class="py-3 px-4">34</td><td class="py-3 px-4 price-high">£53.38-£160.95</td><td class="py-3 px-4"><span class="bg-green-500/20 text-green-400 px-2 py-1 rounded text-sm">Low</span></td></tr><tr class="border-b border-white/5"><td class="py-3 px-4"><span class="text-emerald-400 font-bold">QS</span> Quorn Stone</td><td class="py-3 px-4">50+</td><td class="py-3 px-4 price-low">£33.16-£88.00</td><td class="py-3 px-4"><span class="bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded text-sm">Medium</span></td></tr><tr class="border-b border-white/5"><td class="py-3 px-4"><span class="text-purple-400 font-bold">AS</span> Authentic Stone</td><td class="py-3 px-4">284</td><td class="py-3 px-4 price-mid">£49.95-£89.90</td><td class="py-3 px-4"><span class="bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded text-sm">Medium</span></td></tr><tr><td class="py-3 px-4"><span class="text-cyan-400 font-bold">TS</span> Travertine Store</td><td class="py-3 px-4">30+</td><td class="py-3 px-4 price-low">£23.99-£36.99</td><td class="py-3 px-4"><span class="bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded text-sm">Medium</span></td></tr></tbody></table></div>' },
+            marble: { title: 'Marble - Avg Prices by Competitor', labels: ['Stone Deals', 'Mandarin', 'Topps', 'Authentic'], prices: [43.50, 80.41, 147.26, 58.70],
+                html: '<div class="card rounded-xl p-6"><h3 class="text-lg font-semibold mb-4">Marble Tiles Price Comparison (£/m²)</h3><table class="w-full"><thead><tr class="border-b border-white/10"><th class="text-left py-3 px-4 text-gray-400">Product</th><th class="py-3 px-4 text-gray-400">Finish</th><th class="py-3 px-4 text-gray-400">Stone Deals</th><th class="py-3 px-4 text-gray-400">Mandarin</th><th class="py-3 px-4 text-gray-400">Topps</th><th class="py-3 px-4 text-gray-400">Authentic</th><th class="py-3 px-4 text-green-400">Best</th></tr></thead><tbody><tr class="border-b border-white/5"><td class="py-3 px-4 font-medium">Carrara White</td><td class="py-3 px-4 text-gray-400">Honed</td><td class="py-3 px-4 text-center price-low font-bold">£42.99</td><td class="py-3 px-4 text-center price-high">£91.73</td><td class="py-3 px-4 text-center price-high">£160.95</td><td class="py-3 px-4 text-center price-mid">£49.95</td><td class="py-3 px-4 text-center"><span class="bg-green-500/20 text-green-400 px-2 py-1 rounded">£42.99</span></td></tr><tr class="border-b border-white/5"><td class="py-3 px-4 font-medium">Carrara White</td><td class="py-3 px-4 text-gray-400">Polished</td><td class="py-3 px-4 text-center price-low font-bold">£42.99</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center price-high">£133.57</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center"><span class="bg-green-500/20 text-green-400 px-2 py-1 rounded">£42.99</span></td></tr><tr class="border-b border-white/5"><td class="py-3 px-4 font-medium">Calacatta</td><td class="py-3 px-4 text-gray-400">Honed</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center price-mid">£65.57</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center"><span class="bg-green-500/20 text-green-400 px-2 py-1 rounded">£65.57</span></td></tr><tr class="border-b border-white/5"><td class="py-3 px-4 font-medium">Calacatta Amber</td><td class="py-3 px-4 text-gray-400">Honed</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center price-high">£83.93</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center"><span class="bg-green-500/20 text-green-400 px-2 py-1 rounded">£83.93</span></td></tr><tr class="border-b border-white/5"><td class="py-3 px-4 font-medium">Crema Beige</td><td class="py-3 px-4 text-gray-400">Polished</td><td class="py-3 px-4 text-center price-low font-bold">£36.54</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center"><span class="bg-green-500/20 text-green-400 px-2 py-1 rounded">£36.54</span></td></tr><tr><td class="py-3 px-4 font-medium">Marquina Black</td><td class="py-3 px-4 text-gray-400">Polished</td><td class="py-3 px-4 text-center price-mid">£44.99</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center"><span class="bg-green-500/20 text-green-400 px-2 py-1 rounded">£44.99</span></td></tr></tbody></table></div>' },
+            travertine: { title: 'Travertine - Avg Prices by Competitor', labels: ['Stone Deals', 'Topps', 'Trav Store'], prices: [33.49, 80.87, 29.99],
+                html: '<div class="card rounded-xl p-6"><h3 class="text-lg font-semibold mb-4">Travertine Tiles Price Comparison (£/m²)</h3><table class="w-full"><thead><tr class="border-b border-white/10"><th class="text-left py-3 px-4 text-gray-400">Product</th><th class="py-3 px-4 text-gray-400">Finish</th><th class="py-3 px-4 text-gray-400">Stone Deals</th><th class="py-3 px-4 text-gray-400">Topps</th><th class="py-3 px-4 text-gray-400">Trav Store</th><th class="py-3 px-4 text-green-400">Best</th></tr></thead><tbody><tr class="border-b border-white/5"><td class="py-3 px-4 font-medium">Classic Travertine</td><td class="py-3 px-4 text-gray-400">Tumbled</td><td class="py-3 px-4 text-center price-low font-bold">£28.99</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center"><span class="bg-green-500/20 text-green-400 px-2 py-1 rounded">£28.99</span></td></tr><tr class="border-b border-white/5"><td class="py-3 px-4 font-medium">Classic Travertine</td><td class="py-3 px-4 text-gray-400">Filled/Honed</td><td class="py-3 px-4 text-center price-low">£25.99</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center price-low font-bold">£25.99</td><td class="py-3 px-4 text-center"><span class="bg-green-500/20 text-green-400 px-2 py-1 rounded">£25.99</span></td></tr><tr class="border-b border-white/5"><td class="py-3 px-4 font-medium">Premium Ivory</td><td class="py-3 px-4 text-gray-400">Filled/Honed</td><td class="py-3 px-4 text-center price-mid">£34.99</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center price-mid">£34.99</td><td class="py-3 px-4 text-center"><span class="bg-green-500/20 text-green-400 px-2 py-1 rounded">£34.99</span></td></tr><tr class="border-b border-white/5"><td class="py-3 px-4 font-medium">Dark Beige</td><td class="py-3 px-4 text-gray-400">Filled/Honed</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center price-low font-bold">£23.99</td><td class="py-3 px-4 text-center"><span class="bg-green-500/20 text-green-400 px-2 py-1 rounded">£23.99</span></td></tr><tr><td class="py-3 px-4 font-medium">Tumbled Modular</td><td class="py-3 px-4 text-gray-400">Modular</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center price-mid">£54.89</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center"><span class="bg-green-500/20 text-green-400 px-2 py-1 rounded">£54.89</span></td></tr></tbody></table></div>' },
+            limestone: { title: 'Limestone - Avg Prices by Competitor', labels: ['Stone Deals', 'Mandarin', 'Quorn'], prices: [40.99, 36.60, 50.27],
+                html: '<div class="card rounded-xl p-6"><h3 class="text-lg font-semibold mb-4">Limestone Tiles Price Comparison (£/m²)</h3><table class="w-full"><thead><tr class="border-b border-white/10"><th class="text-left py-3 px-4 text-gray-400">Product</th><th class="py-3 px-4 text-gray-400">Finish</th><th class="py-3 px-4 text-gray-400">Stone Deals</th><th class="py-3 px-4 text-gray-400">Mandarin</th><th class="py-3 px-4 text-gray-400">Quorn</th><th class="py-3 px-4 text-green-400">Best</th></tr></thead><tbody><tr class="border-b border-white/5"><td class="py-3 px-4 font-medium">Dijon Limestone</td><td class="py-3 px-4 text-gray-400">Tumbled</td><td class="py-3 px-4 text-center price-mid">£36.99</td><td class="py-3 px-4 text-center price-mid">£35.99</td><td class="py-3 px-4 text-center price-low font-bold">£35.70</td><td class="py-3 px-4 text-center"><span class="bg-green-500/20 text-green-400 px-2 py-1 rounded">£35.70</span></td></tr><tr class="border-b border-white/5"><td class="py-3 px-4 font-medium">Jerusalem Gold</td><td class="py-3 px-4 text-gray-400">Tumbled</td><td class="py-3 px-4 text-center price-low font-bold">£32.99</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center"><span class="bg-green-500/20 text-green-400 px-2 py-1 rounded">£32.99</span></td></tr><tr class="border-b border-white/5"><td class="py-3 px-4 font-medium">Moleanos</td><td class="py-3 px-4 text-gray-400">Honed</td><td class="py-3 px-4 text-center price-mid">£49.99</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center"><span class="bg-green-500/20 text-green-400 px-2 py-1 rounded">£49.99</span></td></tr><tr class="border-b border-white/5"><td class="py-3 px-4 font-medium">Monte Carlo</td><td class="py-3 px-4 text-gray-400">Tumbled</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center price-low font-bold">£33.16</td><td class="py-3 px-4 text-center"><span class="bg-green-500/20 text-green-400 px-2 py-1 rounded">£33.16</span></td></tr><tr><td class="py-3 px-4 font-medium">Versailles</td><td class="py-3 px-4 text-gray-400">Softly Aged</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center text-gray-600">-</td><td class="py-3 px-4 text-center price-mid">£62.00</td><td class="py-3 px-4 text-center"><span class="bg-green-500/20 text-green-400 px-2 py-1 rounded">£62.00</span></td></tr></tbody></table></div>' }
+        };
+        let priceChart, productChart;
+        function init() {
+            priceChart = new Chart(document.getElementById('priceChart'), { type: 'bar', data: { labels: data.overview.labels, datasets: [{ label: 'Price', data: data.overview.prices, backgroundColor: ['#4ade80', '#fbbf24', '#f87171', '#a855f7'], borderRadius: 8 }] }, options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#9ca3af' } }, x: { grid: { display: false }, ticks: { color: '#9ca3af' } } } } });
+            productChart = new Chart(document.getElementById('productChart'), { type: 'doughnut', data: { labels: ['Authentic', 'Mandarin', 'Stone Deals', 'Quorn', 'Topps', 'Travertine'], datasets: [{ data: [284, 233, 120, 50, 34, 30], backgroundColor: ['#a855f7', '#f59e0b', '#f97316', '#10b981', '#ef4444', '#06b6d4'], borderWidth: 0 }] }, options: { responsive: true, plugins: { legend: { position: 'right', labels: { color: '#9ca3af', padding: 12 } } } } });
+            show('overview');
+        }
+        function show(cat) {
+            document.querySelectorAll('#tabs button').forEach(b => { b.classList.remove('tab-active'); b.classList.add('tab-inactive'); });
+            document.getElementById('tab-'+cat).classList.add('tab-active');
+            document.getElementById('tab-'+cat).classList.remove('tab-inactive');
+            document.getElementById('content').innerHTML = data[cat].html;
+            document.getElementById('chart-title').textContent = data[cat].title;
+            priceChart.data.labels = data[cat].labels;
+            priceChart.data.datasets[0].data = data[cat].prices;
+            priceChart.update();
+        }
+        init();
     </script>
 </body>
 </html>
