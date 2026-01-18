@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natural Stone Online - Competitor Intelligence Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); min-height: 100vh; color: #fff; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        header { text-align: center; padding: 30px 0; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 30px; }
+        header h1 { font-size: 2.5rem; background: linear-gradient(90deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 10px; }
+        header p { color: #a0aec0; font-size: 1.1rem; }
+        .tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
+        .tab-btn { padding: 12px 24px; border: none; background: rgba(255,255,255,0.1); color: #fff; border-radius: 8px; cursor: pointer; font-size: 1rem; transition: all 0.3s; }
+        .tab-btn:hover { background: rgba(255,255,255,0.2); }
+        .tab-btn.active { background: linear-gradient(90deg, #667eea, #764ba2); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .card { background: rgba(255,255,255,0.05); border-radius: 16px; padding: 24px; border: 1px solid rgba(255,255,255,0.1); }
+        .card h3 { font-size: 1.2rem; margin-bottom: 20px; color: #e2e8f0; }
+        .chart-container { position: relative; height: 300px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        th { background: rgba(255,255,255,0.05); color: #a0aec0; font-weight: 600; }
+        td { color: #e2e8f0; }
+        tr:hover { background: rgba(255,255,255,0.05); }
+        .price { font-weight: 600; color: #48bb78; }
+        .our-price { background: rgba(34, 197, 94, 0.1); }
+        .highlight { background: rgba(34, 197, 94, 0.2); }
+        .insight-box { background: linear-gradient(135deg, rgba(102,126,234,0.2), rgba(118,75,162,0.2)); border-radius: 12px; padding: 20px; margin-bottom: 20px; border: 1px solid rgba(102,126,234,0.3); }
+        .insight-box h4 { color: #667eea; margin-bottom: 10px; }
+        .insight-box ul { list-style: none; }
+        .insight-box li { padding: 8px 0; color: #e2e8f0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .insight-box li:last-child { border-bottom: none; }
+        .note-box { background: rgba(249, 115, 22, 0.1); border: 1px solid rgba(249, 115, 22, 0.3); border-radius: 8px; padding: 15px; margin-bottom: 20px; color: #fed7aa; }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } header h1 { font-size: 1.8rem; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Competitor Intelligence Dashboard</h1>
+            <p>Natural Stone Online vs Market Comparison - Updated January 2025</p>
+        </header>
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('overview')">Overview</button>
+            <button class="tab-btn" onclick="showTab('marble')">Marble</button>
+            <button class="tab-btn" onclick="showTab('travertine')">Travertine</button>
+            <button class="tab-btn" onclick="showTab('limestone')">Limestone</button>
+        </div>
+        <div id="overview" class="tab-content active">
+            <div class="insight-box">
+                <h4>Key Insights</h4>
+                <ul>
+                    <li>Natural Stone Online avg: 55/m2 - Competitive mid-market positioning</li>
+                    <li>Travertine Store is cheapest (30/m2), Topps Tiles most expensive (96/m2)</li>
+                    <li>Your marble is 51% cheaper than Topps Tiles but 49% higher than Stone Deals</li>
+                    <li>Opportunity: Consider adding travertine to your product range</li>
+                </ul>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>Average Price Comparison (All Categories)</h3>
+                    <div class="chart-container"><canvas id="overviewChart"></canvas></div>
+                </div>
+                <div class="card">
+                    <h3>Market Position Summary</h3>
+                    <table>
+                        <thead><tr><th>Competitor</th><th>Avg Price</th><th>vs Natural Stone</th></tr></thead>
+                        <tbody>
+                            <tr class="highlight"><td>Natural Stone Online</td><td class="price">55/m2</td><td>-</td></tr>
+                            <tr><td>Travertine Store</td><td class="price">30/m2</td><td style="color:#48bb78">45% cheaper</td></tr>
+                            <tr><td>Stone Deals</td><td class="price">39/m2</td><td style="color:#48bb78">29% cheaper</td></tr>
+                            <tr><td>Quorn Stone</td><td class="price">50/m2</td><td style="color:#48bb78">9% cheaper</td></tr>
+                            <tr><td>Mandarin Stone</td><td class="price">56/m2</td><td style="color:#f6ad55">2% higher</td></tr>
+                            <tr><td>Topps Tiles</td><td class="price">96/m2</td><td style="color:#fc8181">75% higher</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="marble" class="tab-content">
+            <div class="insight-box">
+                <h4>Marble Market Analysis</h4>
+                <ul>
+                    <li>Natural Stone Online: 65/m2 - Mid-premium positioning</li>
+                    <li>Stone Deals is cheapest at 43.50/m2, Topps Tiles highest at 147.26/m2</li>
+                    <li>Your marble is 56% cheaper than Topps Tiles - strong value proposition</li>
+                </ul>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>Marble Price Comparison</h3>
+                    <div class="chart-container"><canvas id="marbleChart"></canvas></div>
+                </div>
+                <div class="card">
+                    <h3>Marble Products</h3>
+                    <table id="marbleTable">
+                        <thead><tr><th>Product</th><th>Supplier</th><th>Price</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="travertine" class="tab-content">
+            <div class="note-box">Note: Natural Stone Online does not currently stock travertine tiles. This represents a potential growth opportunity.</div>
+            <div class="insight-box">
+                <h4>Travertine Market Analysis</h4>
+                <ul>
+                    <li>Travertine Store leads with lowest prices at 30/m2</li>
+                    <li>Mandarin Stone positions as premium at 56/m2</li>
+                    <li>Opportunity: Entry at 35-40/m2 could capture mid-market</li>
+                </ul>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>Travertine Price Comparison</h3>
+                    <div class="chart-container"><canvas id="travertineChart"></canvas></div>
+                </div>
+                <div class="card">
+                    <h3>Travertine Products</h3>
+                    <table id="travertineTable">
+                        <thead><tr><th>Product</th><th>Supplier</th><th>Price</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="limestone" class="tab-content">
+            <div class="insight-box">
+                <h4>Limestone Market Analysis</h4>
+                <ul>
+                    <li>Natural Stone Online: 45/m2 - Competitive pricing</li>
+                    <li>Mandarin Stone cheapest at 36.60/m2, Quorn Stone highest at 50.27/m2</li>
+                    <li>Your limestone is well-positioned in the mid-range</li>
+                </ul>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>Limestone Price Comparison</h3>
+                    <div class="chart-container"><canvas id="limestoneChart"></canvas></div>
+                </div>
+                <div class="card">
+                    <h3>Limestone Products</h3>
+                    <table id="limestoneTable">
+                        <thead><tr><th>Product</th><th>Supplier</th><th>Price</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
