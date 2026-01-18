@@ -20,6 +20,7 @@
             <button class="tab-btn" data-tab="travertine">Travertine</button>
             <button class="tab-btn" data-tab="limestone">Limestone</button>
             <button class="tab-btn" data-tab="seo">SEO Analysis</button>
+            <button class="tab-btn" data-tab="ppc">PPC Analysis</button>
         </div>
 
         <!-- Overview Tab -->
@@ -78,13 +79,7 @@
                 <h3>Marble Products in Market</h3>
                 <table>
                     <thead>
-                        <tr>
-                            <th>Product</th>
-                            <th>Price/m2</th>
-                            <th>Supplier</th>
-                            <th>Size</th>
-                            <th>Finish</th>
-                        </tr>
+                        <tr><th>Product</th><th>Price/m2</th><th>Supplier</th><th>Size</th><th>Finish</th></tr>
                     </thead>
                     <tbody id="marbleComparisonTable"></tbody>
                 </table>
@@ -111,13 +106,7 @@
                 <h3>Competitor Travertine Products</h3>
                 <table>
                     <thead>
-                        <tr>
-                            <th>Product</th>
-                            <th>Price/m2</th>
-                            <th>Supplier</th>
-                            <th>Size</th>
-                            <th>Finish</th>
-                        </tr>
+                        <tr><th>Product</th><th>Price/m2</th><th>Supplier</th><th>Size</th><th>Finish</th></tr>
                     </thead>
                     <tbody id="travertineComparisonTable"></tbody>
                 </table>
@@ -140,13 +129,7 @@
                 <h3>Limestone Products in Market</h3>
                 <table>
                     <thead>
-                        <tr>
-                            <th>Product</th>
-                            <th>Price/m2</th>
-                            <th>Supplier</th>
-                            <th>Size</th>
-                            <th>Finish</th>
-                        </tr>
+                        <tr><th>Product</th><th>Price/m2</th><th>Supplier</th><th>Size</th><th>Finish</th></tr>
                     </thead>
                     <tbody id="limestoneComparisonTable"></tbody>
                 </table>
@@ -158,7 +141,6 @@
             <div class="insight-box seo-critical">
                 <h4>Critical Issues (Fix Immediately)</h4>
                 <ul>
-                    <li><strong>Currency Display Bug:</strong> Prices showing as "Dhs." (UAE Dirhams) instead of GBP - confuses UK customers</li>
                     <li><strong>Missing Meta Descriptions:</strong> Many pages lack unique meta descriptions - hurts CTR in search results</li>
                     <li><strong>Duplicate Content:</strong> Marquee banner text repeated 20+ times in HTML source code</li>
                     <li><strong>JavaScript Errors:</strong> "translator.updateLangSwitcher()" visible in page content - broken script</li>
@@ -180,12 +162,7 @@
                 <h3>Technical SEO Audit</h3>
                 <table>
                     <thead>
-                        <tr>
-                            <th>Element</th>
-                            <th>Status</th>
-                            <th>Current Value</th>
-                            <th>Recommendation</th>
-                        </tr>
+                        <tr><th>Element</th><th>Status</th><th>Current Value</th><th>Recommendation</th></tr>
                     </thead>
                     <tbody id="seoTechnicalTable"></tbody>
                 </table>
@@ -195,12 +172,7 @@
                 <h3>On-Page SEO Issues</h3>
                 <table>
                     <thead>
-                        <tr>
-                            <th>Page Type</th>
-                            <th>Issue</th>
-                            <th>Impact</th>
-                            <th>How to Fix</th>
-                        </tr>
+                        <tr><th>Page Type</th><th>Issue</th><th>Impact</th><th>How to Fix</th></tr>
                     </thead>
                     <tbody id="seoOnPageTable"></tbody>
                 </table>
@@ -210,12 +182,7 @@
                 <h3>Content and Structure Issues</h3>
                 <table>
                     <thead>
-                        <tr>
-                            <th>Issue</th>
-                            <th>Location</th>
-                            <th>Priority</th>
-                            <th>Action Required</th>
-                        </tr>
+                        <tr><th>Issue</th><th>Location</th><th>Priority</th><th>Action Required</th></tr>
                     </thead>
                     <tbody id="seoContentTable"></tbody>
                 </table>
@@ -224,17 +191,114 @@
             <div class="insight-box seo-positive">
                 <h4>What is Working Well</h4>
                 <ul>
+                    <li><strong>Geo-Targeting:</strong> Currency adapts to visitor location (GBP for UK, AED for UAE) - smart implementation</li>
+                    <li><strong>Blog Active:</strong> Tips & Articles blog exists at /blogs/tips-and-articles with regular content</li>
                     <li><strong>Sitemap:</strong> Properly configured Shopify sitemap with products, collections, pages, and blog</li>
                     <li><strong>Robots.txt:</strong> Standard Shopify configuration, properly blocks admin/checkout pages</li>
-                    <li><strong>Schema.org:</strong> Has WebPage structured data on homepage</li>
-                    <li><strong>Trustpilot Integration:</strong> Social proof visible in header - good for conversions</li>
                     <li><strong>SSL Certificate:</strong> Site properly secured with HTTPS</li>
                     <li><strong>URL Structure:</strong> Clean, readable URLs (/collections/limestone, /products/garrowby)</li>
                 </ul>
             </div>
         </div>
-    </div>
 
+        <!-- PPC Analysis Tab -->
+        <div id="ppc" class="tab-content">
+            <div class="insight-box ppc-overview">
+                <h4>Google Ads Overview</h4>
+                <div class="ppc-stats">
+                    <div class="ppc-stat">
+                        <span class="stat-label">Avg CPC (UK Stone Tiles)</span>
+                        <span class="stat-value">£2-5</span>
+                    </div>
+                    <div class="ppc-stat">
+                        <span class="stat-label">Industry Benchmark</span>
+                        <span class="stat-value">£5-7</span>
+                    </div>
+                    <div class="ppc-stat">
+                        <span class="stat-label">Recommended Budget</span>
+                        <span class="stat-value">£1.5-3k/mo</span>
+                    </div>
+                    <div class="ppc-stat">
+                        <span class="stat-label">Expected CTR</span>
+                        <span class="stat-value">2-4%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Keyword Opportunities</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Keyword</th>
+                            <th>Search Volume</th>
+                            <th>Competition</th>
+                            <th>Est. CPC</th>
+                            <th>Priority</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ppcKeywordsTable"></tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h3>Competitor Ad Spend Analysis</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Competitor</th>
+                            <th>Est. Monthly Spend</th>
+                            <th>Ad Coverage</th>
+                            <th>Key Strength</th>
+                            <th>Threat Level</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ppcCompetitorsTable"></tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h3>PPC Strategy Recommendations</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Priority</th>
+                            <th>Action</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ppcRecommendationsTable"></tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h3>Budget Scenarios</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Monthly Budget</th>
+                            <th>Expected Clicks</th>
+                            <th>Expected Conversions</th>
+                            <th>Best For</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ppcBudgetTable"></tbody>
+                </table>
+            </div>
+
+            <div class="insight-box ppc-tips">
+                <h4>Quick Win Opportunities</h4>
+                <ul>
+                    <li><strong>Long-tail keywords:</strong> "limestone floor tiles yorkshire" has lower CPC than generic "stone tiles"</li>
+                    <li><strong>Shopping Ads:</strong> Product listing ads typically outperform text ads for e-commerce</li>
+                    <li><strong>Remarketing:</strong> Target cart abandoners - they already showed purchase intent</li>
+                    <li><strong>Local targeting:</strong> Focus on areas with delivery advantages initially</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
     <script src="data.js"></script>
     <script src="app.js"></script>
 </body>
