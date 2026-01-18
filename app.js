@@ -37,8 +37,8 @@ function createBarChart(ctx, labels, data, colors) {
     });
 }
 
-// Create pie/doughnut chart
-function createPieChart(ctx, labels, data, colors, title) {
+// Create doughnut/pie chart
+function createPieChart(ctx, labels, data, colors) {
     return new Chart(ctx, {
         type: 'doughnut',
         data: {
@@ -46,8 +46,7 @@ function createPieChart(ctx, labels, data, colors, title) {
             datasets: [{
                 data: data,
                 backgroundColor: colors,
-                borderWidth: 2,
-                borderColor: '#1a1a2e'
+                borderWidth: 0
             }]
         },
         options: {
@@ -55,37 +54,119 @@ function createPieChart(ctx, labels, data, colors, title) {
             maintainAspectRatio: false,
             plugins: {
                 legend: {
-                    position: 'right',
+                    position: 'bottom',
                     labels: { padding: 15, usePointStyle: true }
-                },
-                title: { display: !!title, text: title }
+                }
             }
         }
     });
 }
 
-// Populate overview price comparison table (by category, not product)
-function populateOverviewComparison() {
+// Create radar chart for SEO scores
+function createRadarChart(ctx, labels, data, colors) {
+    return new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'SEO Score',
+                data: data,
+                backgroundColor: 'rgba(34, 197, 94, 0.2)',
+                borderColor: 'rgba(34, 197, 94, 1)',
+                borderWidth: 2,
+                pointBackgroundColor: colors
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                r: {
+                    beginAtZero: true,
+                    max: 100,
+                    ticks: { stepSize: 20 },
+                    grid: { color: 'rgba(255,255,255,0.1)' },
+                    angleLines: { color: 'rgba(255,255,255,0.1)' }
+                }
+            },
+            plugins: { legend: { display: false } }
+        }
+    });
+}
+
+// Initialize charts
+const overviewCtx = document.getElementById('overviewChart');
+if (overviewCtx) {
+    createBarChart(overviewCtx, dashboardData.overview.labels, dashboardData.overview.prices, dashboardData.overview.colors);
+}
+
+const pieCtx = document.getElementById('pieChart');
+if (pieCtx) {
+    createPieChart(pieCtx, dashboardData.pieChart.labels, dashboardData.pieChart.data, dashboardData.pieChart.colors);
+}
+
+const marbleCtx = document.getElementById('marbleChart');
+if (marbleCtx) {
+    createBarChart(marbleCtx, dashboardData.marble.labels, dashboardData.marble.prices, dashboardData.marble.colors);
+}
+
+const marblePieCtx = document.getElementById('marblePieChart');
+if (marblePieCtx) {
+    createPieChart(marblePieCtx, dashboardData.marble.pieData.labels, dashboardData.marble.pieData.data, dashboardData.marble.colors);
+}
+
+const travertineCtx = document.getElementById('travertineChart');
+if (travertineCtx) {
+    createBarChart(travertineCtx, dashboardData.travertine.labels, dashboardData.travertine.prices, dashboardData.travertine.colors);
+}
+
+const travertinePieCtx = document.getElementById('travertinePieChart');
+if (travertinePieCtx) {
+    createPieChart(travertinePieCtx, dashboardData.travertine.pieData.labels, dashboardData.travertine.pieData.data, dashboardData.travertine.colors);
+}
+
+const limestoneCtx = document.getElementById('limestoneChart');
+if (limestoneCtx) {
+    createBarChart(limestoneCtx, dashboardData.limestone.labels, dashboardData.limestone.prices, dashboardData.limestone.colors);
+}
+
+const limestonePieCtx = document.getElementById('limestonePieChart');
+if (limestonePieCtx) {
+    createPieChart(limestonePieCtx, dashboardData.limestone.pieData.labels, dashboardData.limestone.pieData.data, dashboardData.limestone.colors);
+}
+
+// SEO Charts
+const seoScoreCtx = document.getElementById('seoScoreChart');
+if (seoScoreCtx && dashboardData.seo) {
+    createRadarChart(seoScoreCtx, dashboardData.seo.scores.labels, dashboardData.seo.scores.data, dashboardData.seo.scores.colors);
+}
+
+const seoIssuesCtx = document.getElementById('seoIssuesChart');
+if (seoIssuesCtx && dashboardData.seo) {
+    createPieChart(seoIssuesCtx, dashboardData.seo.issues.labels, dashboardData.seo.issues.data, dashboardData.seo.issues.colors);
+}
+
+// Populate overview comparison table
+function populateOverviewTable() {
     const tbody = document.getElementById('overviewComparisonTable');
     if (!tbody || !dashboardData.overview.priceComparison) return;
-
-    tbody.innerHTML = dashboardData.overview.priceComparison.map(c => {
+    
+    tbody.innerHTML = dashboardData.overview.priceComparison.map(row => {
         return '<tr>' +
-            '<td><strong>' + c.category + '</strong></td>' +
-            '<td colspan="2" class="our-price">' + c.ourRange + '</td>' +
-            '<td>' + c.competitorLow + '</td>' +
-            '<td>' + c.competitorHigh + '</td>' +
-            '<td colspan="2" class="sales-angle">' + c.ourPosition + '</td>' +
+            '<td>' + row.category + '</td>' +
+            '<td class="price our-price">' + row.ourRange + '</td>' +
+            '<td class="price">' + row.competitorLow + '</td>' +
+            '<td class="price">' + row.competitorHigh + '</td>' +
+            '<td>' + row.ourPosition + '</td>' +
         '</tr>';
     }).join('');
 }
 
-// Populate marble products tables (separate our products from competitors)
+// Populate marble comparison table
 function populateMarbleComparison() {
     const tbody = document.getElementById('marbleComparisonTable');
     if (!tbody) return;
 
-    // Show our products first
     let html = '<tr class="section-header"><td colspan="5"><strong>Our Marble Products</strong></td></tr>';
     
     if (dashboardData.marble.ourProducts) {
@@ -93,12 +174,13 @@ function populateMarbleComparison() {
             return '<tr class="highlight">' +
                 '<td><strong>' + p.name + '</strong></td>' +
                 '<td class="price our-price">£' + p.price.toFixed(2) + '</td>' +
-                '<td colspan="3">Natural Stone Online</td>' +
+                '<td>Natural Stone Online</td>' +
+                '<td>Various</td>' +
+                '<td>Various</td>' +
             '</tr>';
         }).join('');
     }
 
-    // Then competitor products
     html += '<tr class="section-header"><td colspan="5"><strong>Competitor Marble Products</strong></td></tr>';
     
     if (dashboardData.marble.competitorProducts) {
@@ -106,15 +188,33 @@ function populateMarbleComparison() {
             return '<tr>' +
                 '<td>' + p.name + '</td>' +
                 '<td class="price">£' + p.price.toFixed(2) + '</td>' +
-                '<td colspan="3">' + p.competitor + '</td>' +
+                '<td>' + p.competitor + '</td>' +
+                '<td>Various</td>' +
+                '<td>Various</td>' +
             '</tr>';
         }).join('');
     }
-
+    
     tbody.innerHTML = html;
 }
 
-// Populate limestone products tables
+// Populate travertine comparison table
+function populateTravertineComparison() {
+    const tbody = document.getElementById('travertineComparisonTable');
+    if (!tbody || !dashboardData.travertine.products) return;
+    
+    tbody.innerHTML = dashboardData.travertine.products.map(p => {
+        return '<tr>' +
+            '<td>' + p.name + '</td>' +
+            '<td class="price">£' + p.price.toFixed(2) + '</td>' +
+            '<td>' + p.competitor + '</td>' +
+            '<td>Various</td>' +
+            '<td>' + p.position + '</td>' +
+        '</tr>';
+    }).join('');
+}
+
+// Populate limestone comparison table
 function populateLimestoneComparison() {
     const tbody = document.getElementById('limestoneComparisonTable');
     if (!tbody) return;
@@ -126,7 +226,9 @@ function populateLimestoneComparison() {
             return '<tr class="highlight">' +
                 '<td><strong>' + p.name + '</strong></td>' +
                 '<td class="price our-price">£' + p.price.toFixed(2) + '</td>' +
-                '<td colspan="3">Natural Stone Online</td>' +
+                '<td>Natural Stone Online</td>' +
+                '<td>Various</td>' +
+                '<td>Various</td>' +
             '</tr>';
         }).join('');
     }
@@ -138,101 +240,69 @@ function populateLimestoneComparison() {
             return '<tr>' +
                 '<td>' + p.name + '</td>' +
                 '<td class="price">£' + p.price.toFixed(2) + '</td>' +
-                '<td colspan="3">' + p.competitor + '</td>' +
+                '<td>' + p.competitor + '</td>' +
+                '<td>Various</td>' +
+                '<td>Various</td>' +
             '</tr>';
         }).join('');
     }
-
+    
     tbody.innerHTML = html;
 }
 
-// Populate travertine table (competitor products only - we don't stock)
-function populateTravertineTable() {
-    const tbody = document.getElementById('travertineTable');
-    if (!tbody) return;
-
-    tbody.innerHTML = dashboardData.travertine.products.map(p => {
-        const posClass = p.position === 'Budget' ? 'budget' : (p.position === 'Premium' ? 'premium' : 'mid');
+// Populate SEO Technical Table
+function populateSeoTechnicalTable() {
+    const tbody = document.getElementById('seoTechnicalTable');
+    if (!tbody || !dashboardData.seo || !dashboardData.seo.technical) return;
+    
+    tbody.innerHTML = dashboardData.seo.technical.map(row => {
+        const statusClass = row.status === 'Good' ? 'status-good' : (row.status === 'Warning' ? 'status-warning' : 'status-error');
         return '<tr>' +
-            '<td>' + p.competitor + '</td>' +
-            '<td>' + p.name + '</td>' +
-            '<td class="price">£' + p.price.toFixed(2) + '</td>' +
-            '<td><span class="position-tag ' + posClass + '">' + p.position + '</span></td>' +
+            '<td>' + row.element + '</td>' +
+            '<td><span class="status-badge ' + statusClass + '">' + row.status + '</span></td>' +
+            '<td>' + row.current + '</td>' +
+            '<td>' + row.recommendation + '</td>' +
         '</tr>';
     }).join('');
 }
 
-// Initialize all charts
-function initCharts() {
-    createBarChart(
-        document.getElementById('overviewChart'),
-        dashboardData.overview.labels,
-        dashboardData.overview.prices,
-        dashboardData.overview.colors
-    );
-
-    createPieChart(
-        document.getElementById('pieChart'),
-        dashboardData.pieChart.labels,
-        dashboardData.pieChart.data,
-        dashboardData.pieChart.colors,
-        'Market Segments'
-    );
-
-    createBarChart(
-        document.getElementById('marbleChart'),
-        dashboardData.marble.labels,
-        dashboardData.marble.prices,
-        dashboardData.marble.colors
-    );
-
-    createPieChart(
-        document.getElementById('marblePieChart'),
-        dashboardData.marble.pieData.labels,
-        dashboardData.marble.pieData.data,
-        dashboardData.marble.colors,
-        'Products by Supplier'
-    );
-
-    createBarChart(
-        document.getElementById('travertineChart'),
-        dashboardData.travertine.labels,
-        dashboardData.travertine.prices,
-        dashboardData.travertine.colors
-    );
-
-    createPieChart(
-        document.getElementById('travertinePieChart'),
-        dashboardData.travertine.pieData.labels,
-        dashboardData.travertine.pieData.data,
-        dashboardData.travertine.colors,
-        'Products by Supplier'
-    );
-
-    createBarChart(
-        document.getElementById('limestoneChart'),
-        dashboardData.limestone.labels,
-        dashboardData.limestone.prices,
-        dashboardData.limestone.colors
-    );
-
-    createPieChart(
-        document.getElementById('limestonePieChart'),
-        dashboardData.limestone.pieData.labels,
-        dashboardData.limestone.pieData.data,
-        dashboardData.limestone.colors,
-        'Products by Supplier'
-    );
+// Populate SEO On-Page Table
+function populateSeoOnPageTable() {
+    const tbody = document.getElementById('seoOnPageTable');
+    if (!tbody || !dashboardData.seo || !dashboardData.seo.onPage) return;
+    
+    tbody.innerHTML = dashboardData.seo.onPage.map(row => {
+        const impactClass = row.impact === 'Critical' ? 'impact-critical' : (row.impact === 'High' ? 'impact-high' : 'impact-medium');
+        return '<tr>' +
+            '<td>' + row.pageType + '</td>' +
+            '<td>' + row.issue + '</td>' +
+            '<td><span class="impact-badge ' + impactClass + '">' + row.impact + '</span></td>' +
+            '<td>' + row.fix + '</td>' +
+        '</tr>';
+    }).join('');
 }
 
-// Initialize tables
-function initTables() {
-    populateOverviewComparison();
-    populateMarbleComparison();
-    populateLimestoneComparison();
-    populateTravertineTable();
+// Populate SEO Content Table
+function populateSeoContentTable() {
+    const tbody = document.getElementById('seoContentTable');
+    if (!tbody || !dashboardData.seo || !dashboardData.seo.content) return;
+    
+    tbody.innerHTML = dashboardData.seo.content.map(row => {
+        const priorityClass = row.priority === 'High' ? 'priority-high' : (row.priority === 'Medium' ? 'priority-medium' : 'priority-low');
+        return '<tr>' +
+            '<td>' + row.issue + '</td>' +
+            '<td>' + row.location + '</td>' +
+            '<td><span class="priority-badge ' + priorityClass + '">' + row.priority + '</span></td>' +
+            '<td>' + row.action + '</td>' +
+        '</tr>';
+    }).join('');
 }
 
-// Run on load
-initCharts();
-initTables();
+// Initialize all tables
+populateOverviewTable();
+populateMarbleComparison();
+populateTravertineComparison();
+populateLimestoneComparison();
+populateSeoTechnicalTable();
+populateSeoOnPageTable();
+populateSeoContentTable();
